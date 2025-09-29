@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'package:crypto/crypto.dart';
-
 import '../../db/repository.dart';
 import '../menu/menu_screen.dart';
+import '../auth/register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,26 +14,21 @@ class _LoginScreenState extends State<LoginScreen> {
   final _u = TextEditingController();
   final _p = TextEditingController();
 
-  // fungsi untuk hash password
-  String _hashPassword(String input) {
-    return sha256.convert(utf8.encode(input)).toString();
-  }
-
   Future<void> _login() async {
-    final username = _u.text.trim();
-    final password = _hashPassword(_p.text.trim()); // password di-hash
-
-    final user = await Repo.instance.login(username, password);
+    final user = await Repo.instance.login(_u.text, _p.text);
     if (user != null && mounted) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const MenuScreen()),
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Username atau password salah")),
+        MaterialPageRoute(builder: (context) => const MenuScreen()),
       );
     }
+  }
+
+  void _register() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const RegisterScreen()),
+    );
   }
 
   @override
@@ -56,7 +49,24 @@ class _LoginScreenState extends State<LoginScreen> {
               obscureText: true,
             ),
             const SizedBox(height: 20),
-            ElevatedButton(onPressed: _login, child: const Text('Login')),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: _login,
+                    child: const Text('Login'),
+                  ),
+                ),
+                const SizedBox(width: 16), // Jarak antara tombol
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: _register,
+                    child: const Text('Register'),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),

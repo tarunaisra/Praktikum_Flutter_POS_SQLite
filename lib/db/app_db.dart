@@ -3,7 +3,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class AppDatabase {
-  AppDatabase._(); // Private constructor
+  AppDatabase._();
   static final AppDatabase instance = AppDatabase._();
 
   Database? _db;
@@ -25,34 +25,42 @@ class AppDatabase {
   }
 
   Future<void> _onCreate(Database db, int version) async {
-    await db.execute('''CREATE TABLE users(
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      full_name TEXT,
-      username TEXT UNIQUE,
-      email TEXT,
-      password TEXT
-    )''');
+    await db.execute('''
+      CREATE TABLE users(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        full_name TEXT,
+        username TEXT UNIQUE,
+        email TEXT,
+        password TEXT
+      )
+    ''');
 
-    await db.execute('''CREATE TABLE items(
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      name TEXT,
-      price INTEGER,
-      category TEXT
-    )''');
+    await db.execute('''
+      CREATE TABLE items(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT,
+        price INTEGER,
+        category TEXT
+      )
+    ''');
 
-    await db.execute('''CREATE TABLE txns(
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      user_id INTEGER,
-      created_at TEXT,
-      total INTEGER
-    )''');
+    await db.execute('''
+      CREATE TABLE txns(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id INTEGER,
+        created_at TEXT,
+        total INTEGER
+      )
+    ''');
 
-    await db.execute('''CREATE TABLE txn_items(
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      txn_id INTEGER,
-      item_id INTEGER,
-      qty INTEGER,
-      price INTEGER
-    )''');
+    await db.execute('''
+      CREATE TABLE txn_items(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        txn_id INTEGER,
+        item_id INTEGER,
+        qty INTEGER,
+        price INTEGER
+      )
+    ''');
   }
 }
