@@ -1,16 +1,9 @@
-# flutter_pos
+# flutter_pos_sqlite
 
-A new Flutter project.
+## Anggota Kelompok 7 : 
+1. Taruna Isra Elnasa (362458302073)
+2. Yogi Maulana (362458302116)
+3. Ahmad Bactiar Raflyansyah (362458302141)
+4. Midha Liudmila Ilbathuly (362458302079)
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Deskripsi
