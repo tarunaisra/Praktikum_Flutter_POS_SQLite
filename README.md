@@ -6,4 +6,5 @@
 3. Ahmad Bactiar Raflyansyah (362458302141)
 4. Midha Liudmila Ilbathuly (362458302079)
 
-## Deskripsi
+## FILE PDF
+[Modul Praktikum  Flutter POS SQLite.docx](https://github.com/user-attachments/files/22597048/Modul.Praktikum.Flutter.POS.SQLite.docx)
